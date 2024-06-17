@@ -2,36 +2,43 @@
 
 namespace App\Entity;
 
-use App\Repository\OrdersRepository;
+use App\Repository\ProductsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: OrdersRepository::class)]
-class Orders
+#[ORM\Entity(repositoryClass: ProductsRepository::class)]
+class Products
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 20)]
-    private ?string $reference = null;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $totalAmount = null;
+    private ?int $price = null;
 
     #[ORM\Column(options :['default'=> 'CURRENT_TIMESTAMP']  )]
     private ?\DateTimeImmutable $created_at = null;
 
-    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Users $users = null;
+    private ?Categories $categories = null;
 
     /**
      * @var Collection<int, OrdersLine>
      */
-    #[ORM\OneToMany(targetEntity: OrdersLine::class, mappedBy: 'orders', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: OrdersLine::class, mappedBy: 'products')]
     private Collection $ordersLines;
 
     public function __construct()
@@ -44,26 +51,38 @@ class Orders
         return $this->id;
     }
 
-    public function getReference(): ?string
+    public function getName(): ?string
     {
-        return $this->reference;
+        return $this->name;
     }
 
-    public function setReference(string $reference): static
+    public function setName(string $name): static
     {
-        $this->reference = $reference;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getTotalAmount(): ?int
+    public function getDescription(): ?string
     {
-        return $this->totalAmount;
+        return $this->description;
     }
 
-    public function setTotalAmount(int $totalAmount): static
+    public function setDescription(string $description): static
     {
-        $this->totalAmount = $totalAmount;
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }
@@ -80,14 +99,26 @@ class Orders
         return $this;
     }
 
-    public function getUsers(): ?Users
+    public function getImage(): ?string
     {
-        return $this->users;
+        return $this->image;
     }
 
-    public function setUsers(?Users $users): static
+    public function setImage(string $image): static
     {
-        $this->users = $users;
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCategories(): ?Categories
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?Categories $categories): static
+    {
+        $this->categories = $categories;
 
         return $this;
     }
@@ -104,7 +135,7 @@ class Orders
     {
         if (!$this->ordersLines->contains($ordersLine)) {
             $this->ordersLines->add($ordersLine);
-            $ordersLine->setOrders($this);
+            $ordersLine->setProducts($this);
         }
 
         return $this;
@@ -114,8 +145,8 @@ class Orders
     {
         if ($this->ordersLines->removeElement($ordersLine)) {
             // set the owning side to null (unless already changed)
-            if ($ordersLine->getOrders() === $this) {
-                $ordersLine->setOrders(null);
+            if ($ordersLine->getProducts() === $this) {
+                $ordersLine->setProducts(null);
             }
         }
 
