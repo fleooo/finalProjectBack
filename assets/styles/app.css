@@ -1,3 +1,41 @@
-body {
-    background-color: skyblue;
+
+body{
+    font-family: 'Julius Sans One', sans-serif;
+    background-color: #d7C2AF;
+    text-align: center;
+    
 }
+.card1 {
+    background-color: #794529;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: auto;
+    
+    font-family: 'Julius Sans One', sans-serif;
+}
+
+.card {
+    background: #ffffff;
+    font-family: 'Julius Sans One', sans-serif;
+    color: black;
+    border-radius: 10px;
+    width: calc(50% - 40px);
+    margin: 20px auto;
+
+}
+
+
+
+.card9 {margin-top: 10%;
+    
+}
+.card13 {margin-top: 100px;
+    
+}
+.card14 {margin-top: 150px;
+    
+}
+
+
