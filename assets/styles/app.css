@@ -1,3 +1,35 @@
+
+
 body {
-    background-color: skyblue;
+  
+  
+    justify-content: flex-start;
+    
+
+    background-color:  #F3E2D3;
+   
+    font-family: 'Julius Sans One', sans-serif;
+    color: white;
 }
+
+.cardCapsule{
+    /* width: 301px;
+    height: 569px;
+    /* margin-top: 100px;
+   margin-left: 950px;
+    */ 
+    border-radius: 15px 15px 15px 15px;
+    background-color:  #1B1616;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ .btn-custom-primary {
+        background-color: #CCA37E;
+        border-color: #CCA37E;
+        color: #fff; /* Texte en blanc */
+    }
+
+    .btn-custom-primary:hover {
+        background-color: #b2835e; /*
+        border-color: #b2835e;
+    }
