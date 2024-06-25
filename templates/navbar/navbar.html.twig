@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NavbarController!{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg fixed-top brown-nav mx-5 mx-max mt-4 round-border">
+    <div class="container-fluid">
+      <div>
+        <img src="images/fluent_home-48-filled.png"  width="40px" height="35px" alt="home">
+        <a class="navbar-brand " href="#">Connexion</a>
+      </div>
+      <div >
+        <img src="images/bxs_coffee-bean.png" width="40px" height="40px" alt="bean" >
+        <img src="images/ic_sharp-coffee-maker.png" width="40px" height="40px" alt="maker">
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-flex justify-content-between" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+
+        </ul>
+        <img src="images/ic_round-shopping-cart.png" width="40px" height="40px" alt="cart">
+      </div>
+    </div>
+  </nav>
+
+{% endblock %}

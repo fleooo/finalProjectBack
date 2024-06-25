@@ -1,0 +1,2 @@
+1. php bin/console database:create
+2. php bin/console 
