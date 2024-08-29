@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <div>
+        <div class="row">
+            {% include "partials/adminnav.html.twig" %}
+        </div>
+            <div class="main-content">
+                <div class="cart rounded-3 row">
+                    <div class="col">
+                        <img src="/images/iconadmin.png" alt="User Icon" class="my-5">
+                    </div>
+                    <div class="details col-10">
+                        <p>Compte Administrateur :</p>
+                        <p>Mail :</p>
+                        <p>Rôle :</p>
+                    </div>
+               </div>
+            </div>
+    </div>
+{% endblock %}

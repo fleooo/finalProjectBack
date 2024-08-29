@@ -38,6 +38,7 @@ class Products
     /**
      * @var Collection<int, OrdersLine>
      */
+    
     #[ORM\OneToMany(targetEntity: OrdersLine::class, mappedBy: 'products')]
     private Collection $ordersLines;
 
